@@ -1,0 +1,33 @@
+.selection-group {
+    padding: 4px;
+    cursor: pointer !important;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 4px;
+    }
+
+    .form-control {
+        background-color: transparent;
+        padding: 0px;
+        padding-left: 8px;
+        border-width: 0px;
+        cursor: pointer;
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}
+
+.task-field {
+    border-color: transparent;
+    padding-left: 0px;
+
+    &:focus {
+        box-shadow: none;
+        padding-left: 12px;
+    }
+    &:focus, &:hover {
+        border-color: var(--bs-border-color);
+    }
+}

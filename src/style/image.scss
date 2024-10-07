@@ -1,0 +1,26 @@
+.avatar {
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 50% !important;
+    border-width: 1px;
+
+    &.void {
+        border-style: dashed;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    i {
+        font-size: 16px;
+    }
+}
+
+.active {
+    .avatar {
+        border-style: solid !important;
+    }
+}

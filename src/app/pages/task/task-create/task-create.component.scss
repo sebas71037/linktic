@@ -1,0 +1,41 @@
+.task-create-content {
+    --task-header: 60px;
+    --task-footer: 60px;
+
+    width: 100%;
+    height: 100%;
+
+    .loader {
+        width: 20px;
+        height: 20px;
+        font-size: 14px;
+    }
+
+    .btn-task {
+        --bs-btn-padding-y: .25rem;
+        --bs-btn-padding-x: .5rem;
+        --bs-btn-font-size: .75rem;
+    }
+    
+    .task-content-header {
+        height: var(--task-header);
+    }
+    .task-content-footer {
+        height: var(--task-footer);
+    }
+    .task-content-body {
+        padding-top: 16px;
+        height: calc(100% - (var(--task-header) + var(--task-footer)));
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+        
+    .task-name {
+        font-size: 24px;
+    }
+    
+    .task-description {
+        font-size: 14px;
+        min-height: 200px;
+    }
+}

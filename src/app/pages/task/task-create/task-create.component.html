@@ -1,0 +1,107 @@
+<ng-template #content let-offcanvas>
+  <ng-container *ngIf="task$ | async; else noTaskTemplate">
+    <div class="task-create-content">
+      <nav class="navbar sticky-top bg-body-tertiary task-content-header">
+        <!-- <div class="container-fluid"> -->
+          <div class="row w-100 ms-0">
+            <div class="col-auto">
+              <button type="button" class="btn btn-sm btn-task" 
+                [ngClass]="{ 'btn-outline-success': !taskForm.controls['status'].value, 'btn-success': taskForm.controls['status'].value }"
+                (click)="updateStatus($event)">
+                <i class="fa-solid fa-check"></i> 
+                {{ taskForm.controls['status'].value ? 'Finalizada' : 'Finalizar' }}
+              </button>
+            </div>
+            <div class="col">
+              <p id="task-nav-name" [hidden]="!flags['taskname']">
+                {{ taskForm.controls['taskName'].value ?? '' }}
+              </p>
+            </div>
+            
+            <div class="col-auto">
+              <button class="btn btn-sm btn-outline-danger btn-task" (click)="deleteTask($event)">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+              <button class="btn btn-sm btn-task" (click)="goToDashboard()">
+                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+              </button>
+            </div>
+          </div>
+        <!-- </div> -->
+      </nav>
+    
+      <div class="container-fluid task-content-body" (scroll)="onScroll($event)">      
+        <form [formGroup]="taskForm" (ngSubmit)="saveTask()">
+            <div class="row">
+              <div class="col-12 mb-2">
+                <input id="task-name" class="form-control task-field task-name" formControlName="taskName" placeholder="Escribe el nombre de la tarea" appAutoFocus />
+                <!-- <app-message-validator [name]="'taskName'" [configMessages]="formFields.messages.taskName"></app-message-validator> -->
+              </div>
+        
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-5">
+                    <label class="task-label">
+                      Responsable
+                    </label>
+                  </div>
+                  <div class="col">
+                    <app-select-person [persons]="persons$" [control]="taskForm.controls['assigneTo']"></app-select-person>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-5">
+                    <label class="task-label">
+                      Fecha de vencimiento
+                    </label>
+                  </div>
+                  <div class="col">
+                    <div class="input-group selection-group" [ngClass]="{active: taskForm.controls['dueDate'].value}" (click)="d.toggle()">
+                      <button class="btn btn-outline-secondary bi bi-calendar3 avatar void" type="button">
+                        <i class="fa-solid fa-calendar-days"></i>
+                      </button>
+                      <input id="dueDate" class="form-control" type="text" formControlName="dueDate" ngbDatepicker #d="ngbDatepicker" placeholder="Sin fecha"  readonly />
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-12">
+                    <label class="task-label">
+                      Descripción
+                    </label>
+                  </div>
+                  <div class="col mt-2">
+                    <textarea id="task-description" class="form-control task-field task-description" formControlName="description" placeholder="¿De qué trata esta tarea?"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </form>
+      </div>
+    
+      <nav class="navbar sticky-bottom bg-body-tertiary task-content-footer">
+        <div class="container-fluid">
+          @
+        </div>
+      </nav>
+    </div>
+  </ng-container>
+
+  <ng-template #noTaskTemplate>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 text-center py-4">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ng-template>

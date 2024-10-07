@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-12">
+        <div ngbDropdown>
+            <div class="input-group selection-group" [ngClass]="{active: control.value}" ngbDropdownToggle>
+                <button class="btn btn-outline-secondary avatar void" type="button">
+                    <img *ngIf="selectedPerson" src="{{selectedPerson.cover}}" alt="person">
+                    <i *ngIf="!selectedPerson" class="fa-solid fa-user"></i>
+                </button>
+
+                <input class="form-control" type="text" [formControl]="search" placeholder="Sin responsable"
+                (focus)="onFocus()" (blur)="onBlur()"/>
+            
+                <div ngbDropdownMenu class="large">
+                    <div class="container-fluid p-0">
+                        <ng-container *ngFor="let person of (persons | async | filterByField:search.value:searchField); trackBy:identify">
+                            <button ngbDropdownItem (click)="select(person)">
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <div class="avatar mt-1">
+                                            <img src="{{person.cover}}" alt="person">
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="text-nowrap">
+                                            <div class="text-small">
+                                                {{person.fullName}}
+                                            </div>
+                                            <div class="text-extra-small text-secondary">
+                                                {{person.email}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

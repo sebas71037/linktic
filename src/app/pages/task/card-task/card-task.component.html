@@ -1,0 +1,42 @@
+<div class="card mb-2">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-auto">
+                <div class="form-check form-switch action-column fs-5">
+                    <!-- <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked> -->
+                    <input class="form-check-input" (click)="updateStatus();$event.stopPropagation()" type="checkbox" id="switch-{{task.id}}" [checked]="task.status" />
+                    <label class="form-check-label" for="switch-{{task.id}}"></label>
+                </div>
+            </div>
+            <div class="col">
+                <h6>{{ task.taskName }}</h6>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-auto">
+                <div class="action-column">
+                    <div *ngIf="!task.assigneTo" class="avatar void text-center">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div *ngIf="task.assigneTo" class="avatar active text-center">
+                        <img  src="{{task.assigneTo.cover}}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <span class="text-secondary">{{ task.dueDate | date }}</span>
+            </div>
+        </div>
+
+        <!-- <p><strong>Personas asociadas:</strong></p>
+        <ul>
+            <li *ngFor="let person of task.people">
+                {{ person.fullName }} - {{ person.age }} años
+                <br />
+                <small>Habilidades: 
+                    <span *ngFor="let skill of person.skills" class="badge text-bg-primary mx-1">{{skill}}</span>
+                </small>
+            </li>
+        </ul> -->
+    </div>
+</div>

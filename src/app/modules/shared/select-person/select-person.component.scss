@@ -1,0 +1,7 @@
+:host {
+    .dropdown-toggle {
+        &::after {
+            display: none;
+        }
+    }
+}
