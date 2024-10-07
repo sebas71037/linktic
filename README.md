@@ -1,27 +1,49 @@
-# TodoAPP
+# Linktic Frotend Prueba (TODO APP)
+Esta aplicación es un administrador de tareas, basado un poco en la linea gráfica de **Asana**.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Páginas
+La aplicación tiene consigo 2 vistas:
+ 
+### 1. Dashboard de tareas: 
+Lista la tareas existentes, cuenta con filtro.
 
-## Code scaffolding
+![listado-tareas](https://github.com/user-attachments/assets/e3bc9795-f992-46e4-9d40-35c24ac31187)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 2. Creación/Edición de tarea
 
-## Build
+![crear-tarea](https://github.com/user-attachments/assets/aaf0c490-d05b-4625-b9da-432b2825df36)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Servicios
+La aplicación fue estructurada para administrar las tareas en tiempo real, por lo que se conecta con un **Socket Server**.
 
-## Running unit tests
+Listado de eventos (servicios) de suscripción del **Socket** :
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+ 1. Listado de tareas
+ 2. Listado de integrantes del equipo
+ 3. Nueva tarea
 
-## Running end-to-end tests
+Listado de eventos a consumir:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+ 1. Crear tarea
+ 2. Editar tarea
+ 3. Eliminar tarea
 
-## Further help
+### Aclaración
+Como la prueba es para el cargo de Frontend developer, se creo una simulación de como conectarse y comunicarse con el **Socket** basandose en como funciona **Socket.IO**.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Correr proyecto
+Para correr el proyecto solo necesitamos usar la version **20** de NodeJS, el proyecto incluye su configuracion, por lo debemos correr:
+
+```bash
+nvm use
+```
+> Debes tener instalado **nvm**
+
+Despues debemos instalar dependencias y correr el proyecto:
+
+```bash
+npm i
+npm run start
+```
