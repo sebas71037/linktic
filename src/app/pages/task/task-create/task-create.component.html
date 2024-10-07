@@ -59,8 +59,8 @@
                     </label>
                   </div>
                   <div class="col">
-                    <div class="input-group selection-group" [ngClass]="{active: taskForm.controls['dueDate'].value}" (click)="d.toggle()">
-                      <button class="btn btn-outline-secondary bi bi-calendar3 avatar void" type="button">
+                    <div class="input-group selection-group" [ngClass]="{active: taskForm.controls['dueDate'].value}" >
+                      <button class="btn btn-outline-secondary bi bi-calendar3 avatar void" type="button" (click)="d.toggle()">
                         <i class="fa-solid fa-calendar-days"></i>
                       </button>
                       <input id="dueDate" class="form-control" type="text" formControlName="dueDate" ngbDatepicker #d="ngbDatepicker" placeholder="Sin fecha"  readonly />
